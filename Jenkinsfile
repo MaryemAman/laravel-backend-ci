@@ -2,12 +2,13 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = 'dockerhub-credentials'  // Your Jenkins credentials ID
-        DOCKERHUB_USERNAME = 'maryemaman'                 // Your Docker Hub username
-        IMAGE_NAME = 'maryemaman/laravel-backend'  // your Docker Hub repo for backend image
-        IMAGE_TAG = 'latest'                        // tag for the image, 'latest' is fine to start
-
+        DOCKER_HOST = 'tcp://dind:2375'  // Connects to Docker-in-Docker container on the 'jenkins' network
+        DOCKERHUB_CREDENTIALS = 'dockerhub-credentials'
+        DOCKERHUB_USERNAME = 'maryemaman'
+        IMAGE_NAME = 'maryemaman/laravel-backend'
+        IMAGE_TAG = 'latest'
     }
+
 
     stages {
         stage('Checkout') {
