@@ -24,23 +24,33 @@ class AuthenticationController extends Controller
      */
     public function login(LoginRequest $request): JsonResponse
     {
-        $user = User::where(['username' => $request->post('username')])->first();
+    $user = User::where(['username' => $request->post('username')])->first();
 
-        if (empty($user)) {
-            return response()->json(['message' => "Invalid username"], Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
-
-        if (!Hash::check($request->post('password'), $user->password)) {
-            return response()->json(['message' => "Invalid password"], Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
-
-        $token = $user->createToken("auth");
-
+    if (empty($user)) {
         return response()->json([
-            'user' => $user,
-            'api_token' => $token->plainTextToken
-        ], Response::HTTP_OK);
+            'logged_in' => false,
+            'status' => "Invalid username",
+            'errors' => null
+        ], Response::HTTP_UNPROCESSABLE_ENTITY);
     }
+
+    if (!Hash::check($request->post('password'), $user->password)) {
+        return response()->json([
+            'logged_in' => false,
+            'status' => "Invalid password",
+            'errors' => null
+        ], Response::HTTP_UNPROCESSABLE_ENTITY);
+    }
+
+    $token = $user->createToken("auth");
+
+    return response()->json([
+        'logged_in' => true,
+        'status' => 'Login successful',
+        'token' => $token->plainTextToken,
+        'user' => $user
+    ], Response::HTTP_OK);
+}
 
     /**
      * Logout
