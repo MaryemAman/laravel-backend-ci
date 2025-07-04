@@ -18,6 +18,8 @@ COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
 
 COPY . .
 
+RUN mkdir -p bootstrap/cache && chmod -R 775 bootstrap/cache
+
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=9000"]
