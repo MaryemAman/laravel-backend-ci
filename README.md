@@ -33,6 +33,9 @@ docker run -p 9000:9000 maryemaman/laravel-backend
 
 # 🔁 CI/CD Pipeline (via Jenkins)
 
+## On [localhost:8080](http://localhost:8080)
+<img width="500" height="1000" alt="image" src="https://github.com/user-attachments/assets/d9e12ff6-d520-4f0d-bace-f822f77149a4" />
+
 This repo includes a Jenkinsfile that:
 - Builds a Docker image
 - Logs into Docker Hub
