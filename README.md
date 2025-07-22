@@ -77,16 +77,15 @@ Test backend at:
 
 ✅ http://localhost:9000
 
----
-
-📄 **Made by Maryem Mohamed**  
-🔗 [GitHub Profile](https://github.com/MaryemAman)  
-🚀 Powered by Docker, Jenkins, and GitHub CI/CD
-
-
 🔗 Git Commands
 ```bash
 git add .
 git commit -m "update"
 git push origin main
 ```
+
+---
+
+📄 **Made by Maryem Mohamed**  
+🔗 [GitHub Profile](https://github.com/MaryemAman)  
+🚀 Powered by Docker, Jenkins, and GitHub CI/CD
